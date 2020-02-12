@@ -1,6 +1,7 @@
 package oiasso.system.listadocoches.api.controllers;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -56,7 +57,7 @@ public class CocheController {
 	// *********************
     
 	@GetMapping("/{matricula:(\\d{4})([A-Z]{3})}")
-	public EntityModel<Coche> findByMatricula(@PathVariable String matricula ) {
+	public EntityModel<Coche> findByMatricula(@NotNull @PathVariable String matricula ) {
 		Coche coche = cocheFacade.findByMatricula(matricula);
 		return cocheAssembler.toModel(coche);
 	}
