@@ -24,7 +24,7 @@ import oiasso.system.listadocoches.api.assembers.CocheAssembler;
 import oiasso.system.listadocoches.api.beans.Coche;
 import oiasso.system.listadocoches.api.facades.CocheFacade;
 import oiasso.system.listadocoches.api.filters.CocheFilter;
-import oiasso.system.listadocoches.validators.CocheFilterValidator;
+import oiasso.system.listadocoches.api.validators.CocheFilterValidator;
 
 /**
  * 	Si realizamoso una petición ajax desde JavaScript, estas peticiones por defecto están limitadas a ficheros JavaScript
