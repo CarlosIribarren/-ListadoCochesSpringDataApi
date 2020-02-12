@@ -9,10 +9,11 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * Se extiende de la clase RepresentationModel para poder disponer de links de HATEOAS.
- */
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+
+@ApiModel("Model Coche")
 @Entity
 @Table(name = "coche")
 public class Coche {
@@ -23,6 +24,7 @@ public class Coche {
 
 	/** Matricula */
 	@Id
+	@ApiModelProperty(value = "Matricula del coche", required = true)
 	private String matricula;
 
 	/** Marca */
