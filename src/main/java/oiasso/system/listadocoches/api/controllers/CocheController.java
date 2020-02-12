@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,15 +25,6 @@ import oiasso.system.listadocoches.api.facades.CocheFacade;
 import oiasso.system.listadocoches.api.filters.CocheFilter;
 import oiasso.system.listadocoches.api.validators.CocheFilterValidator;
 
-/**
- * 	Si realizamoso una petición ajax desde JavaScript, estas peticiones por defecto están limitadas a ficheros JavaScript
- *  que nos descarguemos desde el mismo servidor. Es decir, solo se pueden realizar llamadas ajax desde JavaScript desde ficheros
- *  descargados desde el mismo servidor al que hacemos la peticion. Si intentamos hacer la llamada desde un fichero que no se ha 
- *  descargado desde el mismo servidor, dara un error de CORS. Para permitir que se puedan hacer llamadas AJAX desde ficheros js
- *  que no se han descargado desde el mismo servidor, se pone la anotacion @CrossOrigin.
- */
-
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RestController
 @RequestMapping("/api/coche")
 public class CocheController {
