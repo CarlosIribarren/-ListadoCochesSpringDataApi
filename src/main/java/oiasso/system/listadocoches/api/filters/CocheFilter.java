@@ -2,13 +2,17 @@ package oiasso.system.listadocoches.api.filters;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class CocheFilter {
 
+	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) 
 	LocalDate fechaInicio;
 	
+	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) 
 	LocalDate fechaFin;
 

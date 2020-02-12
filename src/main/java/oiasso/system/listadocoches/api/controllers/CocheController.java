@@ -1,6 +1,7 @@
 package oiasso.system.listadocoches.api.controllers;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,25 +24,24 @@ import oiasso.system.listadocoches.api.assembers.CocheAssembler;
 import oiasso.system.listadocoches.api.beans.Coche;
 import oiasso.system.listadocoches.api.facades.CocheFacade;
 import oiasso.system.listadocoches.api.filters.CocheFilter;
-import oiasso.system.listadocoches.validators.CocheFilterValidator;
+import oiasso.system.listadocoches.api.validators.CocheFilterValidator;
 
-/**
- * 	Si realizamoso una petición ajax desde JavaScript, estas peticiones por defecto están limitadas a ficheros JavaScript
- *  que nos descarguemos desde el mismo servidor. Es decir, solo se pueden realizar llamadas ajax desde JavaScript desde ficheros
- *  descargados desde el mismo servidor al que hacemos la peticion. Si intentamos hacer la llamada desde un fichero que no se ha 
- *  descargado desde el mismo servidor, dara un error de CORS. Para permitir que se puedan hacer llamadas AJAX desde ficheros js
- *  que no se han descargado desde el mismo servidor, se pone la anotacion @CrossOrigin.
- */
-
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RestController
 @RequestMapping("/api/coche")
 public class CocheController {
 
+	// *********************
+	// ***** InitBinder ****
+	// *********************
+	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 		dataBinder.addValidators(new CocheFilterValidator());
 	}
+	
+	// *********************
+	// ***** Atributos *****
+	// *********************	
 	
 	@Autowired
 	private CocheFacade cocheFacade;
@@ -53,8 +52,12 @@ public class CocheController {
     @Autowired
     private CocheAssembler cocheAssembler;
 	
+	// *********************
+	// ****** Metodos ******
+	// *********************
+    
 	@GetMapping("/{matricula:(\\d{4})([A-Z]{3})}")
-	public EntityModel<Coche> findByMatricula(@PathVariable String matricula ) {
+	public EntityModel<Coche> findByMatricula(@NotNull @PathVariable String matricula ) {
 		Coche coche = cocheFacade.findByMatricula(matricula);
 		return cocheAssembler.toModel(coche);
 	}
