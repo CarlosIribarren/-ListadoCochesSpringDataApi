@@ -17,15 +17,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import oiasso.system.listadocoches.api.assembers.CocheAssembler;
 import oiasso.system.listadocoches.api.beans.Coche;
 import oiasso.system.listadocoches.api.facades.CocheFacade;
 import oiasso.system.listadocoches.api.filters.CocheFilter;
 import oiasso.system.listadocoches.api.validators.CocheFilterValidator;
 
+@Api
 @RestController
 @RequestMapping("/api/coche")
 public class CocheController {
@@ -57,6 +59,7 @@ public class CocheController {
 	// *********************
     
 	@GetMapping("/{matricula:(\\d{4})([A-Z]{3})}")
+	@ApiOperation(value = "Obtiene un coche dada su matricula", notes = "Retorna un coche" )
 	public EntityModel<Coche> findByMatricula(@NotNull @PathVariable String matricula ) {
 		Coche coche = cocheFacade.findByMatricula(matricula);
 		return cocheAssembler.toModel(coche);
@@ -67,6 +70,7 @@ public class CocheController {
      * Si vienen en la URL, Spring MVC hace el binding de esos parametros por nosotros en la clase Pageable.
      */
 	@GetMapping("")
+	@ApiOperation(value = "Obtener un listado paginado de coches", notes = "Retorna un listado paginado de coches" )
 	public PagedModel<EntityModel<Coche>> findAll(Pageable pageable) {
 		Page<Coche> content = cocheFacade.findAll(pageable);
 		return pagedAssembler.toModel(content, cocheAssembler);
@@ -78,6 +82,7 @@ public class CocheController {
 	 * No hay que configurar nada.
 	 */
 	@GetMapping("/findByFechaMatriculacionBetween")
+	@ApiOperation(value = "Obtiene un listado paginado de coches que tengan la fecha de matriculacion entre la fechaInicio y la fechaFin", notes = "Retorna un listado paginado de coches" )
 	public ResponseEntity<Object> findByFechaMatriculacionBetween( @Valid CocheFilter cocheFilter, Pageable pageable, BindingResult bindingResult) {
 		Page<Coche> content = cocheFacade.findByFechaMatriculacionBetween(cocheFilter.getFechaInicio(), cocheFilter.getFechaFin(), pageable);
 		PagedModel<EntityModel<Coche>> response = pagedAssembler.toModel(content, cocheAssembler); 

@@ -12,6 +12,16 @@
 	<version>1.0.1-SNAPSHOT</version>
 	<name>ListadoCochesSpringDataApi</name>
 
+	<!-- ******************************
+		 ******* Properties ***********
+		 ****************************** -->
+
+	<properties>
+		<springfox.snapshot.version>3.0.0-SNAPSHOT</springfox.snapshot.version>
+		<springfox.version>2.9.2</springfox.version>
+		
+	</properties>
+
 
 	<!-- ******************************
 		 ********** Spring ************
@@ -80,6 +90,50 @@
 			<artifactId>flyway-core</artifactId>
 		</dependency>
 
+	<!-- ******************************
+		 ********* Swagger ************
+		 ****************************** -->
+
+		<!-- 
+		
+		The springfox-data-rest library's 2.9.2 version doesn't provide smooth integration with the Spring Boot 2 and Spring Data REST API.
+	 	Para hacer funcionar con Spring Boot 2 y Spring Data REST API y Swager 2 hay que utilizar la version 3.0.0-SNAPSHOT en las dependecias de io.springfox:
+	 	
+	 	- springfox-swagger2
+	 	- springfox-data-rest
+	 	- springfox-bean-validators
+	 	 
+	 	El en UI (springfox-swagger-ui) se sigue utilizando la 2.9.2
+	 	
+	 	Para resolver la dependecia de 3.0.0-SNAPAHOT hay que añadir el repositorio "http://oss.jfrog.org/artifactory/oss-snapshot-local/" 
+	 	
+	 	-->
+
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>${springfox.snapshot.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>${springfox.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-data-rest</artifactId>
+		    <version>${springfox.snapshot.version}</version>
+		</dependency>
+        
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-bean-validators</artifactId>
+		    <version>${springfox.snapshot.version}</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -93,8 +147,26 @@
 				<configuration>
 					<classifier>exec</classifier>
 				</configuration>
+				
+				<!--  The build-info goal generates META-INF/build-info.properties with the coordinates of the project and the build time.  -->
+				<executions>
+     				<execution>
+       					<goals>
+         					<goal>build-info</goal>
+       					</goals>
+       				</execution>				
+				</executions>
+				
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+	    <repository>
+	        <id>jcenter-snapshots</id>
+	        <name>jcenter</name>
+	        <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+	    </repository>
+	</repositories>
 
 </project>
