@@ -9,9 +9,6 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * Se extiende de la clase RepresentationModel para poder disponer de links de HATEOAS.
- */
 
 @Entity
 @Table(name = "coche")

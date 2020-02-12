@@ -39,10 +39,18 @@ import oiasso.system.listadocoches.validators.CocheFilterValidator;
 @RequestMapping("/api/coche")
 public class CocheController {
 
+	// *********************
+	// ***** InitBinder ****
+	// *********************
+	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 		dataBinder.addValidators(new CocheFilterValidator());
 	}
+	
+	// *********************
+	// ***** Atributos *****
+	// *********************	
 	
 	@Autowired
 	private CocheFacade cocheFacade;
@@ -53,6 +61,10 @@ public class CocheController {
     @Autowired
     private CocheAssembler cocheAssembler;
 	
+	// *********************
+	// ****** Metodos ******
+	// *********************
+    
 	@GetMapping("/{matricula:(\\d{4})([A-Z]{3})}")
 	public EntityModel<Coche> findByMatricula(@PathVariable String matricula ) {
 		Coche coche = cocheFacade.findByMatricula(matricula);
