@@ -147,6 +147,16 @@
 				<configuration>
 					<classifier>exec</classifier>
 				</configuration>
+				
+				<!--  The build-info goal generates META-INF/build-info.properties with the coordinates of the project and the build time.  -->
+				<executions>
+     				<execution>
+       					<goals>
+         					<goal>build-info</goal>
+       					</goals>
+       				</execution>				
+				</executions>
+				
 			</plugin>
 		</plugins>
 	</build>

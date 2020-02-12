@@ -4,6 +4,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 import java.util.function.Predicate;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -26,6 +28,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @Import({ SpringDataRestConfiguration.class, BeanValidatorPluginsConfiguration.class })
 public class SwaggerConfiguration {
 
+	@Autowired
+	private BuildProperties buildProperties;
+	
 	/************************
 	 ******** Beans ********* 
 	 ************************/
@@ -46,8 +51,8 @@ public class SwaggerConfiguration {
 
 	private ApiInfo usersApiInfo() {
 		return new ApiInfoBuilder()
-				.title("Listado Coches Api")
-				.version("1.0")
+				.title(buildProperties.getArtifact())
+				.version(buildProperties.getVersion())
 				.license("Oiasso Systems License")
 				.build();
 	}
