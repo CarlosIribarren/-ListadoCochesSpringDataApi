@@ -58,6 +58,11 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+	<!-- ******************************
+		 ********* Testing ************
+		 ****************************** -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -69,10 +74,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-	<!-- ******************************
-		 ********* Testing ************
-		 ****************************** -->
 
 		<!-- Junit -->
         <dependency>
@@ -144,9 +145,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<classifier>exec</classifier>
-				</configuration>
 				
 				<!--  The build-info goal generates META-INF/build-info.properties with the coordinates of the project and the build time.  -->
 				<executions>
