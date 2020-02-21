@@ -9,7 +9,7 @@
 		<version>1.0.0-RELEASE</version>
 	</parent>
 	<artifactId>ListadoCochesSpringDataApi</artifactId>
-	<version>1.0.1-RELEASE</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>ListadoCochesSpringDataApi</name>
 
 	<!-- ******************************
