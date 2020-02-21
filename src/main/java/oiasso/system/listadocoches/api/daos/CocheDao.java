@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import oiasso.system.listadocoches.api.beans.Coche;
+import oiasso.system.listadocoches.api.entitys.Coche;
 
 
 public interface CocheDao extends PagingAndSortingRepository<Coche, Integer> {

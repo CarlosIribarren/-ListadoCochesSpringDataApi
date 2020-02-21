@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import oiasso.system.listadocoches.api.beans.Coche;
 import oiasso.system.listadocoches.api.daos.CocheDao;
+import oiasso.system.listadocoches.api.entitys.Coche;
 import oiasso.system.listadocoches.api.facades.CocheFacade;
 
 @Service
