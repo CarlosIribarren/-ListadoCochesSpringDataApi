@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import oiasso.system.listadocoches.api.beans.Coche;
+import oiasso.system.listadocoches.api.entitys.Coche;
 
 public interface CocheFacade {
 

@@ -1,4 +1,4 @@
-package oiasso.system.listadocoches.api.filters;
+package oiasso.system.listadocoches.api.beans;
 
 import java.time.LocalDate;
 

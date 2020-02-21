@@ -8,8 +8,8 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
-import oiasso.system.listadocoches.api.beans.Coche;
 import oiasso.system.listadocoches.api.controllers.CocheController;
+import oiasso.system.listadocoches.api.entitys.Coche;
 
 @Component
 public class CocheAssembler implements RepresentationModelAssembler <Coche, EntityModel<Coche>> {

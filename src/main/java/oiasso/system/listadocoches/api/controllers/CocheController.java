@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import oiasso.system.listadocoches.api.assembers.CocheAssembler;
-import oiasso.system.listadocoches.api.beans.Coche;
+import oiasso.system.listadocoches.api.beans.CocheFilter;
+import oiasso.system.listadocoches.api.entitys.Coche;
 import oiasso.system.listadocoches.api.facades.CocheFacade;
-import oiasso.system.listadocoches.api.filters.CocheFilter;
 import oiasso.system.listadocoches.api.validators.CocheFilterValidator;
 
 @Api
