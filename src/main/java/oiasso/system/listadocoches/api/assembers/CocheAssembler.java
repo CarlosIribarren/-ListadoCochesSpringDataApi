@@ -9,13 +9,13 @@ import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
 import oiasso.system.listadocoches.api.controllers.CocheController;
-import oiasso.system.listadocoches.api.entitys.Coche;
+import oiasso.system.listadocoches.api.dtos.CocheDTO;
 
 @Component
-public class CocheAssembler implements RepresentationModelAssembler <Coche, EntityModel<Coche>> {
+public class CocheAssembler implements RepresentationModelAssembler <CocheDTO, EntityModel<CocheDTO>> {
 
 	@Override
-	public EntityModel<Coche> toModel(Coche coche) {
+	public EntityModel<CocheDTO> toModel(CocheDTO coche) {
 		// Para cada coche se añade un link con su propio link
 		Link self = linkTo(methodOn(CocheController.class).findByMatricula(coche.getMatricula())).withSelfRel();
 		// Se pueden añadir los links que se quieran " return new EntityModel<>(coche, self, otro,...);"

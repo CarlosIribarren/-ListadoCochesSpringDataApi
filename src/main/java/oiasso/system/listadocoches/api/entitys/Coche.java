@@ -102,5 +102,4 @@ public class Coche {
 	public void setMotor(String motor) {
 		this.motor = motor;
 	}
-
 }

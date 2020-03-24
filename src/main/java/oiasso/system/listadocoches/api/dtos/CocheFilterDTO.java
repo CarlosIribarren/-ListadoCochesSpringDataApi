@@ -1,4 +1,4 @@
-package oiasso.system.listadocoches.api.beans;
+package oiasso.system.listadocoches.api.dtos;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class CocheFilter {
+public class CocheFilterDTO {
 
 	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) 

@@ -16,8 +16,8 @@ RUN mvn -Dmaven.test.skip=true package
 
 FROM gcr.io/distroless/java:8
 WORKDIR /app
-COPY --from=ETAPA_MAVEN /build/target/ListadoCochesSpringDataApi-exec.jar /app/
-ENTRYPOINT ["java", "-jar", "ListadoCochesSpringDataApi-exec.jar"]
+COPY --from=ETAPA_MAVEN /build/target/ListadoCochesSpringDataApi.jar /app/
+ENTRYPOINT ["java", "-jar", "ListadoCochesSpringDataApi.jar"]
 
 
 # NOTA: Este proyecto tiene dependecia de la BD. Necesita que la BD este levantada.
