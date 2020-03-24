@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import oiasso.system.listadocoches.api.assembers.CocheAssembler;
-import oiasso.system.listadocoches.api.beans.CocheFilter;
+import oiasso.system.listadocoches.api.dtos.CocheDTO;
+import oiasso.system.listadocoches.api.dtos.CocheFilterDTO;
 import oiasso.system.listadocoches.api.entitys.Coche;
 import oiasso.system.listadocoches.api.facades.CocheFacade;
 import oiasso.system.listadocoches.api.validators.CocheFilterValidator;
@@ -49,7 +50,7 @@ public class CocheController {
 	private CocheFacade cocheFacade;
 	
     @Autowired
-    private PagedResourcesAssembler<Coche> pagedAssembler;
+    private PagedResourcesAssembler<CocheDTO> pagedAssembler;
 	
     @Autowired
     private CocheAssembler cocheAssembler;
@@ -60,8 +61,8 @@ public class CocheController {
     
 	@GetMapping("/{matricula:(\\d{4})([A-Z]{3})}")
 	@ApiOperation(value = "Obtiene un coche dada su matricula", notes = "Retorna un coche" )
-	public EntityModel<Coche> findByMatricula(@NotNull @PathVariable String matricula ) {
-		Coche coche = cocheFacade.findByMatricula(matricula);
+	public EntityModel<CocheDTO> findByMatricula(@NotNull @PathVariable String matricula ) {
+		CocheDTO coche = cocheFacade.findByMatricula(matricula);
 		return cocheAssembler.toModel(coche);
 	}
     
@@ -71,8 +72,8 @@ public class CocheController {
      */
 	@GetMapping("")
 	@ApiOperation(value = "Obtener un listado paginado de coches", notes = "Retorna un listado paginado de coches" )
-	public PagedModel<EntityModel<Coche>> findAll(Pageable pageable) {
-		Page<Coche> content = cocheFacade.findAll(pageable);
+	public PagedModel<EntityModel<CocheDTO>> findAll(Pageable pageable) {
+		Page<CocheDTO> content = cocheFacade.findAll(pageable);
 		return pagedAssembler.toModel(content, cocheAssembler);
 	}
 	
@@ -83,9 +84,9 @@ public class CocheController {
 	 */
 	@GetMapping("/findByFechaMatriculacionBetween")
 	@ApiOperation(value = "Obtiene un listado paginado de coches que tengan la fecha de matriculacion entre la fechaInicio y la fechaFin", notes = "Retorna un listado paginado de coches" )
-	public ResponseEntity<Object> findByFechaMatriculacionBetween( @Valid CocheFilter cocheFilter, Pageable pageable, BindingResult bindingResult) {
-		Page<Coche> content = cocheFacade.findByFechaMatriculacionBetween(cocheFilter.getFechaInicio(), cocheFilter.getFechaFin(), pageable);
-		PagedModel<EntityModel<Coche>> response = pagedAssembler.toModel(content, cocheAssembler); 
+	public ResponseEntity<Object> findByFechaMatriculacionBetween( @Valid CocheFilterDTO cocheFilter, Pageable pageable, BindingResult bindingResult) {
+		Page<CocheDTO> content = cocheFacade.findByFechaMatriculacionBetween(cocheFilter.getFechaInicio(), cocheFilter.getFechaFin(), pageable);
+		PagedModel<EntityModel<CocheDTO>> response = pagedAssembler.toModel(content, cocheAssembler); 
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	

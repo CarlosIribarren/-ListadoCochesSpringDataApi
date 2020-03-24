@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import oiasso.system.listadocoches.api.beans.CocheFilter;
+import oiasso.system.listadocoches.api.dtos.CocheFilterDTO;
 
 /**
  * Valida que en el filtro de Coches la fecha de inicio no sea inferior a la fecha de fin.
@@ -14,13 +14,13 @@ public class CocheFilterValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return CocheFilter.class.equals(clazz);
+		return CocheFilterDTO.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		CocheFilter cocheFilter = (CocheFilter) target;
+		CocheFilterDTO cocheFilter = (CocheFilterDTO) target;
 		
 
 			LocalDate fechaInicio = cocheFilter.getFechaInicio();

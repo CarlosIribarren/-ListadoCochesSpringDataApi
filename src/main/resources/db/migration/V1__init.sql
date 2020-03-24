@@ -12,7 +12,7 @@ ALTER TABLE ${defaultSchema}.coche OWNER TO ${user};
 GRANT ALL ON TABLE ${defaultSchema}.coche TO ${user};
 
 insert into ${defaultSchema}.coche (matricula,marca,modelo,fecha_matriculacion,motor) values 
-    ('5414-ONR','Audi',' Audi A3 2.0 T AT','2009-01-02','Audi 2.0L 4  cilindros 200 hp 207 ft-lbs Turbo'),
+    ('5414-ONR','Audi',' Audi A3 2.0 T AT','1980-01-02','Audi 2.0L 4  cilindros 200 hp 207 ft-lbs Turbo'),
     ('3231-TXB','Audi',' Audi A3 2.0 T','2009-01-03','Audi 2.0L 4  cilindros 200 hp 207 ft-lbs Turbo'),
     ('2336-VRA','Audi',' Audi A3 2.0 T Quattro','2009-01-04','Audi 2.0L 4  cilindros 200 hp 207 ft-lbs Turbo'),
     ('1954-LVA','Audi',' Audi A3 2.0 T Quattro','2009-01-05','Audi 2.0L 4  cilindros 200 hp 207 ft-lbs Turbo'),
