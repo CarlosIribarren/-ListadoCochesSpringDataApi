@@ -18,7 +18,7 @@
 
 	<properties>
 		<springfox.snapshot.version>3.0.0-SNAPSHOT</springfox.snapshot.version>
-		<springfox.version>2.9.2</springfox.version>
+		<springfox.version>2.10.0</springfox.version>
 		
 	</properties>
 
